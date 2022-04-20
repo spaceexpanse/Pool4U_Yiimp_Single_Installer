@@ -130,23 +130,25 @@ exit
 fi
 fi
 
-dialog --title "Use AutoExchange" \
---yesno "Would you like the stratum to be built with autoexchange enabled?" 7 60
-response=$?
-case $response in
-   0) AutoExchange=yes;;
-   1) AutoExchange=no;;
-   255) echo "[ESC] key pressed.";;
-esac
+AutoExchange=yes
+#dialog --title "Use AutoExchange" \
+#--yesno "Would you like the stratum to be built with autoexchange enabled?" 7 60
+#response=$?
+#case $response in
+#   0) AutoExchange=yes;;
+#   1) AutoExchange=no;;
+#   255) echo "[ESC] key pressed.";;
+#esac
 
-dialog --title "Use Dedicated Coin Ports" \
---yesno "Would you like YiiMP to be built with dedicated coin ports?" 7 60
-response=$?
-case $response in
-   0) CoinPort=yes;;
-   1) CoinPort=no;;
-   255) echo "[ESC] key pressed.";;
-esac
+CoinPort=yes
+#dialog --title "Use Dedicated Coin Ports" \
+#--yesno "Would you like YiiMP to be built with dedicated coin ports?" 7 60
+#response=$?
+#case $response in
+#   0) CoinPort=yes;;
+#   1) CoinPort=no;;
+#   255) echo "[ESC] key pressed.";;
+#esac
 
 if [ -z "${PublicIP:-}" ]; then
   if pstree -p | egrep --quiet --extended-regexp ".*sshd.*\($$\)"; then
