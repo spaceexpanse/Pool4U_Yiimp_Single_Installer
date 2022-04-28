@@ -9,6 +9,14 @@ source /etc/yiimpserver.conf
 source $STORAGE_ROOT/yiimp/.yiimp.conf
 source $HOME/yiimpserver/yiimp_single/.wireguard.install.cnf
 
+Host_zemi=$DBInternalIP
+IFS="." read -r Host_1 Host_2 Host_3 Host_4 <<< "${DBInternalIP}"
+echo "${Host_1} ${Host_2} ${Host_3} ${Host_4}"
+for i in $Host_1"."$Host_2"."$Host_3".%"; do
+    Host_Napravi+="$i "
+done
+echo "${Host_Napravi}"
+
 set -eu -o pipefail
 
 function print_error {
@@ -40,8 +48,8 @@ sudo mysql -u root -p"${DBRootPassword}" -e "$SQL"
 
 else
   Q1="CREATE DATABASE IF NOT EXISTS ${YiiMPDBName};"
-  Q2="GRANT ALL ON ${YiiMPDBName}.* TO '${YiiMPPanelName}'@'${DBInternalIP}' IDENTIFIED BY '$PanelUserDBPassword';"
-  Q3="GRANT ALL ON ${YiiMPDBName}.* TO '${StratumDBUser}'@'${DBInternalIP}' IDENTIFIED BY '$StratumUserDBPassword';"
+  Q2="GRANT ALL ON ${YiiMPDBName}.* TO '${YiiMPPanelName}'@'${Host_Napravi}' IDENTIFIED BY '$PanelUserDBPassword';"
+  Q3="GRANT ALL ON ${YiiMPDBName}.* TO '${StratumDBUser}'@'${Host_Napravi}' IDENTIFIED BY '$StratumUserDBPassword';"
   Q4="FLUSH PRIVILEGES;"
   SQL="${Q1}${Q2}${Q3}${Q4}"
   sudo mysql -u root -p"${DBRootPassword}" -e "$SQL"
