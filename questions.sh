@@ -274,7 +274,7 @@ StratumDBUser='"${StratumDBUser}"'
 StratumUserDBPassword='"'"''"${StratumUserDBPassword}"''"'"'
 
 # Unless you do some serious modifications, this installer will not work with any other repo of YiiMP!
-YiiMPRepo='https://github.com/mivanoski/Pool4U_Yiimp.git'
+YiiMPRepo='https://github.com/spaceexpanse/Pool4U_Yiimp.git'
 ' | sudo -E tee $STORAGE_ROOT/yiimp/.yiimp.conf >/dev/null 2>&1
 else
 echo 'STORAGE_USER='"${STORAGE_USER}"'
