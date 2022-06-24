@@ -41,7 +41,9 @@ if [[ ("$wireguard" == "true") ]]; then
   source wireguard.sh
 fi
 source system.sh
+if [[ ("$InstallSSL" == "yes") ]]; then
 source self_ssl.sh
+fi
 source db.sh
 source nginx_upgrade.sh
 source web.sh
