@@ -34,6 +34,10 @@ echo -e " Installing MariaDB 10.4...$COL_RESET"
 MARIADB_VERSION='10.4'
 sudo debconf-set-selections <<< "maria-db-$MARIADB_VERSION mysql-server/root_password password $DBRootPassword"
 sudo debconf-set-selections <<< "maria-db-$MARIADB_VERSION mysql-server/root_password_again password $DBRootPassword"
+### Added by SpeX
+rm -f /var/lib/mysql/ibdata1
+rm -f /var/lib/mysql/ib_logfile* 
+#### https://dba.stackexchange.com/questions/23361/innodb-force-recovery-when-innodb-corruption
 apt_install mariadb-server mariadb-client
 echo -e "$GREEN MariaDB build complete...$COL_RESET"
 echo -e " Creating DB users for YiiMP...$COL_RESET"
