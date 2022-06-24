@@ -130,7 +130,7 @@ exit
 fi
 fi
 
-AutoExchange=yes
+#AutoExchange=yes
 dialog --title "Use AutoExchange" \
 --yesno "Would you like the stratum to be built with autoexchange enabled?" 7 60
 response=$?
@@ -140,7 +140,7 @@ response=$?
    255) echo "[ESC] key pressed.";;
 esac
 
-CoinPort=yes
+#CoinPort=yes
 dialog --title "Use Dedicated Coin Ports" \
 --yesno "Would you like YiiMP to be built with dedicated coin ports?" 7 60
 response=$?
