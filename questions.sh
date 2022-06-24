@@ -134,7 +134,7 @@ fi
 dialog --title "Use AutoExchange" \
 --yesno "Would you like the stratum to be built with autoexchange enabled?" 7 60
 response=$?
-#ase $response in
+case $response in
    0) AutoExchange=yes;;
    1) AutoExchange=no;;
    255) echo "[ESC] key pressed.";;
