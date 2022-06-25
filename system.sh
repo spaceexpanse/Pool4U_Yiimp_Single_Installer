@@ -28,7 +28,7 @@ if [[ ("$UsingDomain" == "yes") ]]; then
 fi
 
 # Set timezone
-echo -e " Setting TimeZone to Europe/Skopje...$COL_RESET"
+echo -e " Setting TimeZone to Europe/Helsinki...$COL_RESET"
 if [ ! -f /etc/timezone ]; then
 echo "Setting timezone to Europe/Helsinki."
 echo "Europe/Helsinki" > sudo /etc/timezone
