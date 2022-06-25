@@ -12,14 +12,14 @@ source $STORAGE_ROOT/yiimp/.wireguard.conf
 fi
 
 if [[ ("$wireguard" == "true") ]]; then
-message_box "Pool4Us YiiMP Server Installer" \
+message_box "YiiMP Server Installer" \
 "You have choosen to install YiiMP Single Server with WireGuard!
 \n\nThis option will install all componets of YiimP on a single server along with WireGuard so you can easily add additional servers in the future.
 \n\nPlease make sure any domain name or sub domain names are pointed to this servers IP prior to running this installer.
 \n\nAfter answering the following questions, setup will be automated.
 \n\nNOTE: If installing on a system with less then 8 GB of RAM you may experience system issues!"
 else
-message_box "Pool4Us YiiMP Server Installer" \
+message_box "YiiMP Server Installer" \
 "You have choosen to install YiiMP Single Server!
 \n\nThis option will install all componets of YiiMP on a single server.
 \n\nPlease make sure any domain name or sub domain names are pointed to this servers IP prior to running this installer.
