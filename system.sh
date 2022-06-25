@@ -180,7 +180,7 @@ fi
 
 echo -e "$GREEN Done...$COL_RESET"
 
-echo -e " Downloading Pool4U YiiMP Repo...$COL_RESET"
+echo -e " Downloading YiiMP Repo...$COL_RESET"
 hide_output sudo git clone -b spex ${YiiMPRepo} $STORAGE_ROOT/yiimp/yiimp_setup/yiimp
 if [[ ("$CoinPort" == "yes") ]]; then
 	cd $STORAGE_ROOT/yiimp/yiimp_setup/yiimp
