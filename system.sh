@@ -48,7 +48,8 @@ echo -e "$GREEN Done...$COL_RESET"
 # PHP 7
 echo -e " Installing Ondrej PHP PPA...$COL_RESET"
 if [ ! -f /etc/apt/sources.list.d/ondrej-php-bionic.list ]; then
-hide_output sudo add-apt-repository -y ppa:ondrej/php
+echo " Installing add-apt-repository..."
+#hide_output sudo add-apt-repository -y ppa:ondrej/php
 fi
 echo -e "$GREEN Done...$COL_RESET"
 
@@ -73,6 +74,7 @@ echo -e " Updating system packages...$COL_RESET"
 echo -e "$GREEN Done...$COL_RESET"
 echo -e " Upgrading system packages...$COL_RESET"
 if [ ! -f /boot/grub/menu.lst ]; then
+echo " Installing add-apt-repository..."
 #apt_get_quiet upgrade
 else
 sudo rm /boot/grub/menu.lst
