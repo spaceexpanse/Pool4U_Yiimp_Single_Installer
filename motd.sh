@@ -7,8 +7,8 @@
 source /etc/functions.sh # load our functions
 source /etc/yiimpserver.conf
 
-apt_install lsb-release figlet update-motd \
-landscape-common update-notifier-common
+#apt_install lsb-release figlet update-motd \
+#landscape-common update-notifier-common
 cd $HOME/yiimpserver/yiimp_single/ubuntu/etc/update-motd.d
 sudo rm -r /etc/update-motd.d/
 sudo mkdir /etc/update-motd.d/
