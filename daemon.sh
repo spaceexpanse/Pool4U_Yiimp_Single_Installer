@@ -18,37 +18,9 @@ function print_error {
 }
 trap print_error ERR
 
-
-#echo -e " Installing BitCoin PPA...$COL_RESET"
-#if [ ! -f /etc/apt/sources.list.d/bitcoin.list ]; then
-#hide_output sudo add-apt-repository -y ppa:bitcoin/bitcoin
-#fi
-
-#echo -e " Installing additional system files required for daemons...$COL_RESET"
-#hide_output sudo apt-get update
-#apt_install build-essential libtool autotools-dev \
-#automake pkg-config libssl-dev libevent-dev bsdmainutils git libboost-all-dev libminiupnpc-dev \
-#libqt5gui5 libqt5core5a libqt5webkit5-dev libqt5dbus5 qttools5-dev qttools5-dev-tools libprotobuf-dev \
-#protobuf-compiler libqrencode-dev libzmq3-dev libgmp-dev
-
 sudo mkdir -p $STORAGE_ROOT/yiimp/yiimp_setup/tmp
 cd $STORAGE_ROOT/yiimp/yiimp_setup/tmp
 echo -e "$GREEN Additional System Files Completed...$COL_RESET"
-
-#echo -e " Installing Berkeley 4.8, this may take several minutes...$COL_RESET"
-#hide_output sudo apt-get update
-#hide_output apt_install libdb4.8-dev libdb4.8++-dev
-#echo -e "$GREEN Berkeley 4.8 Completed...$COL_RESET"
-
-#echo -e " Installing Berkeley 5.1, this may take several minutes...$COL_RESET"
-#hide_output sudo apt-get update
-#hide_output apt_install libdb5.1 libdb5.1++
-#echo -e "$GREEN Berkeley 5.1 Completed...$COL_RESET"
-
-#echo -e " Installing Berkeley 5.3, this may take several minutes...$COL_RESET"
-#hide_output sudo apt-get update
-#hide_output apt_install libdb5.3 libdb5.3++
-#echo -e "$GREEN Berkeley 5.3 Completed...$COL_RESET"
 
 echo -e " Building OpenSSL 1.0.2g, this may take several minutes...$COL_RESET"
 cd $STORAGE_ROOT/yiimp/yiimp_setup/tmp
