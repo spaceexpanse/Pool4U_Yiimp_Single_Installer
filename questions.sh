@@ -220,63 +220,34 @@ case $response in
 0)
 # Save the global options in $STORAGE_ROOT/yiimp/.yiimp.conf so that standalone
 # tools know where to look for data.
-if [[ ("$wireguard" == "true") ]]; then
-    echo 'STORAGE_USER='"${STORAGE_USER}"'
-    STORAGE_ROOT='"${STORAGE_ROOT}"'
-    PRIMARY_HOSTNAME='"${DomainName}"'
+echo 'STORAGE_USER='"${STORAGE_USER}"'
+STORAGE_ROOT='"${STORAGE_ROOT}"'
+PRIMARY_HOSTNAME='"${DomainName}"'
 
-    UsingDomain='"${UsingDomain}"'
-    UsingSubDomain='"${UsingSubDomain}"'
-    DomainName='"${DomainName}"'
-    StratumURL='"${StratumURL}"'
-    InstallSSL='"${InstallSSL}"'
-    SupportEmail='"${SupportEmail}"'
+UsingDomain='"${UsingDomain}"'
+UsingSubDomain='"${UsingSubDomain}"'
+DomainName='"${DomainName}"'
+StratumURL='"${StratumURL}"'
+InstallSSL='"${InstallSSL}"'
+SupportEmail='"${SupportEmail}"'
 
-    AdminPanel='"${AdminPanel}"'
-    PublicIP='"${PublicIP}"'
-    CoinPort='"${CoinPort}"'
-    AutoExchange='"${AutoExchange}"'
+AdminPanel='"${AdminPanel}"'
+PublicIP='"${PublicIP}"'
+CoinPort='"${CoinPort}"'
+AutoExchange='"${AutoExchange}"'
 
-    DBInternalIP='"${DBInternalIP}"'
-    YiiMPDBName='"${YiiMPDBName}"'
-    DBRootPassword='"'"''"${DBRootPassword}"''"'"'
-    YiiMPPanelName='"${YiiMPPanelName}"'
-    PanelUserDBPassword='"'"''"${PanelUserDBPassword}"''"'"'
-    StratumDBUser='"${StratumDBUser}"'
-    StratumUserDBPassword='"'"''"${StratumUserDBPassword}"''"'"'
+DBInternalIP='"${DBInternalIP}"'
+YiiMPDBName='"${YiiMPDBName}"'
+DBRootPassword='"'"''"${DBRootPassword}"''"'"'
+YiiMPPanelName='"${YiiMPPanelName}"'
+PanelUserDBPassword='"'"''"${PanelUserDBPassword}"''"'"'
+StratumDBUser='"${StratumDBUser}"'
+StratumUserDBPassword='"'"''"${StratumUserDBPassword}"''"'"'
 
-    # Unless you do some serious modifications, this installer will not work with any other repo of YiiMP!
-    YiiMPRepo='https://github.com/mivanoski/yiimp.git'
-    ' | sudo -E tee $STORAGE_ROOT/yiimp/.yiimp.conf >/dev/null 2>&1
-else
-    echo 'STORAGE_USER='"${STORAGE_USER}"'
-    STORAGE_ROOT='"${STORAGE_ROOT}"'
-    PRIMARY_HOSTNAME='"${DomainName}"'
+# Unless you do some serious modifications, this installer will not work with any other repo of YiiMP!
+YiiMPRepo='https://github.com/mivanoski/yiimp.git'
+' | sudo -E tee $STORAGE_ROOT/yiimp/.yiimp.conf >/dev/null 2>&1
 
-    UsingDomain='"${UsingDomain}"'
-    UsingSubDomain='"${UsingSubDomain}"'
-    DomainName='"${DomainName}"'
-    StratumURL='"${StratumURL}"'
-    InstallSSL='"${InstallSSL}"'
-    SupportEmail='"${SupportEmail}"'
-
-    AdminPanel='"${AdminPanel}"'
-    PublicIP='"${PublicIP}"'
-    CoinPort='"${CoinPort}"'
-    AutoExchange='"${AutoExchange}"'
-
-    YiiMPDBName='"${YiiMPDBName}"'
-    DBRootPassword='"'"''"${DBRootPassword}"''"'"'
-    YiiMPPanelName='"${YiiMPPanelName}"'
-    PanelUserDBPassword='"'"''"${PanelUserDBPassword}"''"'"'
-    StratumDBUser='"${StratumDBUser}"'
-    StratumUserDBPassword='"'"''"${StratumUserDBPassword}"''"'"'
-    YiiMPStratumName='"${YiiMPStratumName}"'
-
-    # Unless you do some serious modifications, this installer will not work with any other repo of YiiMP!
-    YiiMPRepo='https://github.com/mivanoski/yiimp.git'
-    ' | sudo -E tee $STORAGE_ROOT/yiimp/.yiimp.conf >/dev/null 2>&1
-fi;;
 1)
 
 clear
