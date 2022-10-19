@@ -27,19 +27,17 @@ RESULT=2
 #' | sudo -E tee $HOME/yiimpserver/yiimp_single/.wireguard.install.cnf >/dev/null 2>&1;
 #fi
 
-if [ $RESULT = 2 ]
-then
-clear;
-echo '
-wireguard=true
-' | sudo -E tee $HOME/yiimpserver/yiimp_single/.wireguard.install.cnf >/dev/null 2>&1;
-echo 'server_type='db'
-DBInternalIP='10.0.0.2'
-' | sudo -E tee $STORAGE_ROOT/yiimp/.wireguard.conf >/dev/null 2>&1;
+if [ $RESULT = 2 ] then
+    clear;
+    echo '
+    wireguard=true
+    ' | sudo -E tee $HOME/yiimpserver/yiimp_single/.wireguard.install.cnf >/dev/null 2>&1;
+    echo 'server_type='db'
+    DBInternalIP='10.0.0.2'
+    ' | sudo -E tee $STORAGE_ROOT/yiimp/.wireguard.conf >/dev/null 2>&1;
 fi
 
-if [ $RESULT = 3 ]
-then
-clear;
-exit;
+if [ $RESULT = 3 ] then
+    clear;
+    exit;
 fi

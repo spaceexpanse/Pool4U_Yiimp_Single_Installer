@@ -77,18 +77,18 @@ password='"${DBRootPassword}"'
 
 else
   echo '[clienthost1]
-user='"${YiiMPPanelName}"'
-password='"${PanelUserDBPassword}"'
-database='"${YiiMPDBName}"'
-host='"${DBInternalIP}"'
-[clienthost2]
-user='"${StratumDBUser}"'
-password='"${StratumUserDBPassword}"'
-database='"${YiiMPDBName}"'
-host='"${DBInternalIP}"'
-[mysql]
-user=root
-password='"${DBRootPassword}"'
+  user='"${YiiMPPanelName}"'
+  password='"${PanelUserDBPassword}"'
+  database='"${YiiMPDBName}"'
+  host='"${DBInternalIP}"'
+  [clienthost2]
+  user='"${StratumDBUser}"'
+  password='"${StratumUserDBPassword}"'
+  database='"${YiiMPDBName}"'
+  host='"${DBInternalIP}"'
+  [mysql]
+  user=root
+  password='"${DBRootPassword}"'
 ' | sudo -E tee $STORAGE_ROOT/yiimp/.my.cnf >/dev/null 2>&1
 fi
 
@@ -105,14 +105,15 @@ echo -e "$GREEN Database import complete...$COL_RESET"
 
 echo -e " Tweaking MariaDB for better performance...$COL_RESET"
 if [[ ("$wireguard" == "false") ]]; then
-  sudo sed -i '/max_connections/c\max_connections         = 800' /etc/mysql/my.cnf
+  sudo sed -i '/max_connections/c\max_connections         = 2000' /etc/mysql/my.cnf
   sudo sed -i '/thread_cache_size/c\thread_cache_size       = 512' /etc/mysql/my.cnf
   sudo sed -i '/tmp_table_size/c\tmp_table_size          = 128M' /etc/mysql/my.cnf
   sudo sed -i '/max_heap_table_size/c\max_heap_table_size     = 128M' /etc/mysql/my.cnf
   sudo sed -i '/wait_timeout/c\wait_timeout            = 60' /etc/mysql/my.cnf
   sudo sed -i '/max_allowed_packet/c\max_allowed_packet      = 64M' /etc/mysql/my.cnf
+  sudo sed -i 's/#bind-address=0.0.0.0/bind-address='${DBInternalIP}'/g' /etc/mysql/my.cnf
 else
-  sudo sed -i '/max_connections/c\max_connections         = 800' /etc/mysql/my.cnf
+  sudo sed -i '/max_connections/c\max_connections         = 2000' /etc/mysql/my.cnf
   sudo sed -i '/thread_cache_size/c\thread_cache_size       = 512' /etc/mysql/my.cnf
   sudo sed -i '/tmp_table_size/c\tmp_table_size          = 128M' /etc/mysql/my.cnf
   sudo sed -i '/max_heap_table_size/c\max_heap_table_size     = 128M' /etc/mysql/my.cnf

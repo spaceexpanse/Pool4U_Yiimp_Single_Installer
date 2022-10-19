@@ -16,8 +16,8 @@ clear
 
 # Generate random open PORT
 function EPHYMERAL_PORT(){
-    LPORT=2768;
-    UPORT=6699;
+    LPORT=8000;
+    UPORT=9999;
     while true; do
         MPORT=$[$LPORT + ($RANDOM % $UPORT)];
         (echo "" >/dev/tcp/127.0.0.1/${MPORT}) >/dev/null 2>&1
@@ -158,7 +158,7 @@ sudo cp -r stratum.${coinsymbollower} /usr/bin
 sudo ufw allow $coinport
 echo
 echo "Adding stratum.${coinsymbollower} to crontab for autostart at system boot."
-(crontab -l 2>/dev/null; echo "@reboot sleep 10 && bash stratum.${coinsymbollower} start ${coinsymbollower}") | crontab -
+(crontab -l 2>/dev/null; echo "@reboot sleep 20 && bash stratum.${coinsymbollower} start ${coinsymbollower}") | crontab -
 echo
 echo -e "$YELLOW Starting your new stratum...$COL_RESET"
 bash stratum.${coinsymbollower} start ${coinsymbollower}

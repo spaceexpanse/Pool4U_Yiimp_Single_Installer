@@ -10,9 +10,6 @@ source /etc/yiimpserver.conf
 
 clear
 echo -e " Installing WireGuard...$COL_RESET"
-sudo add-apt-repository ppa:wireguard/wireguard -y
-sudo apt-get update -y
-sudo apt-get install wireguard-dkms wireguard-tools -y
 (umask 077 && printf "[Interface]\nPrivateKey = " | sudo tee /etc/wireguard/wg0.conf > /dev/null)
 wg genkey | sudo tee -a /etc/wireguard/wg0.conf | wg pubkey | sudo tee /etc/wireguard/publickey
 
