@@ -37,9 +37,9 @@ echo -e "$GREEN Folders created...$COL_RESET"
 source menu.sh
 source questions.sh
 source $HOME/yiimpserver/yiimp_single/.wireguard.install.cnf
-if [[ ("$wireguard" == "true") ]]; then
+#if [[ ("$wireguard" == "true") ]]; then
   source wireguard.sh
-fi
+#fi
 source system.sh
 source self_ssl.sh
 source db.sh
