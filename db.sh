@@ -27,7 +27,7 @@ function print_error {
 trap print_error ERR
 
 if [[ ("$wireguard" == "true") ]]; then
-source $STORAGE_ROOT/yiimp/.wireguard.conf
+    source $STORAGE_ROOT/yiimp/.wireguard.conf
 fi
 
 echo -e " Installing MariaDB 10.4...$COL_RESET"
@@ -65,7 +65,6 @@ host='"${DBInternalIP}"'
 user=root
 password='"${DBRootPassword}"'
 ' | sudo -E tee $STORAGE_ROOT/yiimp/.my.cnf >/dev/null 2>&1
-fi
 
 sudo chmod 0600 $STORAGE_ROOT/yiimp/.my.cnf
 echo -e "$GREEN Passwords can be found in $STORAGE_ROOT/yiimp/.my.cnf$COL_RESET"
