@@ -80,9 +80,9 @@ if [[ ("$UsingDomain" == "yes") ]]; then
     esac
 else
 
-# If user is not using a domain and is just using the server IP these fileds can be automatically detected.
+    # If user is not using a domain and is just using the server IP these fileds can be automatically detected.
 
-# Sets server IP automatically
+    # Sets server IP automatically
     DomainName=$(get_publicip_from_web_service 4 || get_default_privateip 4)
     StratumURL=$(get_publicip_from_web_service 4 || get_default_privateip 4)
     UsingSubDomain=no
@@ -247,7 +247,7 @@ StratumUserDBPassword='"'"''"${StratumUserDBPassword}"''"'"'
 # Unless you do some serious modifications, this installer will not work with any other repo of YiiMP!
 YiiMPRepo='https://github.com/mivanoski/yiimp.git'
 ' | sudo -E tee $STORAGE_ROOT/yiimp/.yiimp.conf >/dev/null 2>&1
-
+fi;;
 1)
 
 clear
