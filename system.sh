@@ -4,7 +4,7 @@
 # Created by Pool4U for YiiMP use... #
 ######################################
 
-clear
+#clear
 source /etc/functions.sh
 source $STORAGE_ROOT/yiimp/.yiimp.conf
 source $HOME/yiimpserver/yiimp_single/.wireguard.install.cnf

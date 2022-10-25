@@ -55,7 +55,7 @@ source motd.sh
 source server_harden.sh
 source $STORAGE_ROOT/yiimp/.yiimp.conf
 
-clear
+#clear
 
 if [[ ("$UsingDomain" == "yes") ]]; then
   echo -e "Installation of your YiiMP Single Server is now completed."

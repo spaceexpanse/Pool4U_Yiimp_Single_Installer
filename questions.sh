@@ -194,7 +194,7 @@ YiiMPDBName=$(head /dev/urandom | tr -dc A-Za-z0-9 | head -c 13 ; echo '')
 YiiMPPanelName=Panel$(head /dev/urandom | tr -dc A-Za-z0-9 | head -c 13 ; echo '')
 StratumDBUser=Stratum$(head /dev/urandom | tr -dc A-Za-z0-9 | head -c 13 ; echo '')
 
-clear
+#clear
 
 dialog --title "Verify Your Responses" \
 --yesno "Please verify your answers to continue setup:
@@ -250,11 +250,11 @@ YiiMPRepo='https://github.com/mivanoski/yiimp.git'
 ;;
 1)
 
-clear
+#clear
 bash $(basename $0) && exit;;
 
 255)
-clear
+#clear
 echo "User canceled installation"
 exit 0
 ;;

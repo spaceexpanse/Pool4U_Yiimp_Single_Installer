@@ -26,7 +26,7 @@ sudo chmod +x /usr/bin/stratum
 sudo cp -r addport /usr/bin
 sudo chmod +x /usr/bin/addport
 echo '
-clear
+#clear
 run-parts /etc/update-motd.d/ | sudo tee /etc/motd
 ' | sudo -E tee /usr/bin/motd >/dev/null 2>&1
 

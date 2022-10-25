@@ -8,7 +8,7 @@ source $HOME/yiimpserver/yiimp_single/.wireguard.install.cnf
 source $STORAGE_ROOT/yiimp/.wireguard.conf
 source /etc/yiimpserver.conf
 
-clear
+#clear
 echo -e " Installing WireGuard...$COL_RESET"
 (umask 077 && printf "[Interface]\nPrivateKey = " | sudo tee /etc/wireguard/wg0.conf > /dev/null)
 wg genkey | sudo tee -a /etc/wireguard/wg0.conf | wg pubkey | sudo tee /etc/wireguard/publickey
@@ -21,7 +21,7 @@ cd $HOME
 sudo systemctl start wg-quick@wg0
 sudo systemctl enable wg-quick@wg0
 sudo ufw allow 50002
-clear
+#clear
 dbpublic=${PUBLIC_IP}
 mypublic="$(sudo cat /etc/wireguard/publickey)"
 
