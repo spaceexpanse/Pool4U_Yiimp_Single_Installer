@@ -60,11 +60,7 @@ cd $STORAGE_ROOT/yiimp/site/stratum/config
 
 sudo sed -i 's/password = tu8tu5/password = '${blckntifypass}'/g' *.conf
 sudo sed -i 's/server = yaamp.com/server = '${StratumURL}'/g' *.conf
-if [[ ("$wireguard" == "true") ]]; then
-  sudo sed -i 's/host = yaampdb/host = '${DBInternalIP}'/g' *.conf
-else
-sudo sed -i 's/host = yaampdb/host = localhost/g' *.conf
-fi
+sudo sed -i 's/host = yaampdb/host = '${DBInternalIP}'/g' *.conf
 sudo sed -i 's/database = yaamp/database = '${YiiMPDBName}'/g' *.conf
 sudo sed -i 's/username = root/username = '${StratumDBUser}'/g' *.conf
 sudo sed -i 's/password = patofpaq/password = '${StratumUserDBPassword}'/g' *.conf
