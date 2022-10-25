@@ -22,9 +22,8 @@ hide_output sudo make
 cd $STORAGE_ROOT/yiimp/yiimp_setup/yiimp/stratum/iniparser
 hide_output sudo make
 cd $STORAGE_ROOT/yiimp/yiimp_setup/yiimp/stratum
-if [[ ("$AutoExchange" == "yes") ]]; then
 sudo sed -i 's/CFLAGS += -DNO_EXCHANGE/#CFLAGS += -DNO_EXCHANGE/' $STORAGE_ROOT/yiimp/yiimp_setup/yiimp/stratum/Makefile
-fi
+#git config --global --add safe.directory $STORAGE_ROOT/yiimp/yiimp_setup/yiimp
 hide_output sudo make
 
 echo -e " Building stratum folder structure and copying files...$COL_RESET"
