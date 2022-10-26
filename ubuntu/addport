@@ -57,11 +57,11 @@ coinsymbol=${coinsymbol^^}
 if [ -f $STORAGE_ROOT/yiimp/site/stratum/config/stratum.${coinsymbollower} ]; then
   read -r -e -p "A file for ${coinsymbol} already exists. Are you sure you want to overwrite? A new port will be generated and you will need to update your coind.conf blocknotify line (y/n) : " overwrite
   if [[ ("$overwrite" == "n" || "$overwrite" == "N" || "$overwrite" == "no" || "$overwrite" == "NO") ]]; then
-    echo -e "Later gator..."
+    echo -e "$GREEN Later gator...$COL_RESET"
     exit 0
   fi
 if [ ! -f /home/yiimp-data/yiimp/site/stratum/config/$coinalgo.conf ]; then
-  echo -e "Sorry that algo config file doesn't exist in /home/yiimp-data/yiimp/site/stratum/config/ please double check and try again."
+  echo -e "$RED Sorry that algo config file doesn't exist in /home/yiimp-data/yiimp/site/stratum/config/ please double check and try again...$COL_RESET"
   exit 0
 fi
 fi
@@ -71,7 +71,7 @@ if [ -f $STORAGE_ROOT/yiimp/site/stratum/config/$coinsymbollower.$coinalgo.conf 
   if [[ ("$overwrite" == "y" || "$overwrite" == "Y" || "$overwrite" == "yes" || "$overwrite" == "YES") ]]; then
     # Insert the port in to the new symbol.algo.conf
     sed -i '/port/c\port = '${coinport}'' $coinsymbollower.$coinalgo.conf
-    echo -e "Port updated! Remeber to update your blocknotify line!!"
+    echo -e "$CYAN Port updated! Remeber to update your blocknotify line!! $COL_RESET"
   fi
 else
 # Since this is a new symbol we are going to add it to the other conf files first.

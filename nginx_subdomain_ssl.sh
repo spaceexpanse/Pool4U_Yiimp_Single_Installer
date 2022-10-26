@@ -103,7 +103,7 @@ echo '######################################
     hide_output restart_service nginx >/dev/null 2>&1
     hide_output restart_service php7.3-fpm >/dev/null 2>&1
 else
-    echo -e "Certbot generation failed, after the installer is finished check /var/log/letsencrypt (must be root to view) on why it failed."
+    echo -e "$RED Certbot generation failed, after the installer is finished check /var/log/letsencrypt (must be root to view) on why it failed...$COL_RESET"
 fi
 set +eu +o pipefail
 hide_output cd $HOME/yiimpserver/yiimp_single
