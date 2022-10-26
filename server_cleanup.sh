@@ -15,9 +15,9 @@ if [[ ("$CoinPort" == "no") ]]; then
 (crontab -l 2>/dev/null; echo "@reboot sleep 20 && /home/yiimp-data/yiimp/starts/stratum.start.sh") | crontab -
 fi
 
-hide_output (crontab -l 2>/dev/null; echo "@reboot source /etc/functions.sh") | crontab -
-hide_output (crontab -l 2>/dev/null; echo "@reboot source /etc/yiimpserver.conf") | crontab -
-hide_output sudo cp -r first_boot.sh $STORAGE_ROOT/yiimp/
+(crontab -l 2>/dev/null; echo "@reboot source /etc/functions.sh") | crontab -
+(crontab -l 2>/dev/null; echo "@reboot source /etc/yiimpserver.conf") | crontab -
+sudo cp -r first_boot.sh $STORAGE_ROOT/yiimp/
 
 echo -e "$GREEN Crontab system complete...$COL_RESET"
 echo -e "$CYAN Creating YiiMP Screens startup script...$COL_RESET"
@@ -39,8 +39,8 @@ fi
 # Program: yiimp screen startup script #
 #                                      #
 ########################################
-hide_output sudo chmod 777 $STORAGE_ROOT/yiimp/site/log/.
-hide_output sudo chmod 777 $STORAGE_ROOT/yiimp/site/log/debug.log
+sudo chmod 777 $STORAGE_ROOT/yiimp/site/log/.
+sudo chmod 777 $STORAGE_ROOT/yiimp/site/log/debug.log
 LOG_DIR=$STORAGE_ROOT/yiimp/site/log
 CRONS=$STORAGE_ROOT/yiimp/site/crons
 screen -dmS main bash $CRONS/main.sh
@@ -48,7 +48,7 @@ screen -dmS loop2 bash $CRONS/loop2.sh
 screen -dmS blocks bash $CRONS/blocks.sh
 screen -dmS debug tail -f $LOG_DIR/debug.log
 ' | sudo -E tee $STORAGE_ROOT/yiimp/starts/screens.start.sh >/dev/null 2>&1
-hide_output sudo chmod +x $STORAGE_ROOT/yiimp/starts/screens.start.sh
+sudo chmod +x $STORAGE_ROOT/yiimp/starts/screens.start.sh
 
 echo -e "$CYAN Creating Stratum screens start script...$COL_RESET"
 
@@ -137,5 +137,5 @@ echo "source /etc/yiimpserver.conf" | hide_output tee -a ~/.bashrc
 echo "source $STORAGE_ROOT/yiimp/.prescreens.start.conf" | hide_output tee -a ~/.bashrc
 echo -e "$GREEN YiiMP Screens added...$COL_RESET"
 
-hide_output sudo rm -r $STORAGE_ROOT/yiimp/yiimp_setup
-hide_output cd $HOME/yiimpserver/yiimp_single
+sudo rm -r $STORAGE_ROOT/yiimp/yiimp_setup
+cd $HOME/yiimpserver/yiimp_single

@@ -93,7 +93,7 @@ if [ -z "${DISABLE_FIREWALL:-}" ]; then
 fi #NODOC
 set -eu -o pipefail
 echo -e "$GREEN Done...$COL_RESET"
-echo -e " Installing YiiMP Required system packages...$COL_RESET"
+echo -e "$CYAN Installing YiiMP Required system packages...$COL_RESET"
 if [ -f /usr/sbin/apache2 ]; then
     echo Removing apache...
     hide_output apt-get -y purge apache2 apache2-*
