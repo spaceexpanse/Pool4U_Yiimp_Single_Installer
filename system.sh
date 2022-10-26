@@ -96,7 +96,7 @@ echo -e "$GREEN Done...$COL_RESET"
 echo -e "$CYAN Installing YiiMP Required system packages...$COL_RESET"
 if [ -f /usr/sbin/apache2 ]; then
     echo Removing apache...
-    apt-get -y purge apache2 apache2-*
+    sudo apt-get purge apache2 apache2-* -y
     #apt-get -y --purge autoremove
 fi
 
