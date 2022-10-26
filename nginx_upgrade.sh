@@ -28,26 +28,26 @@ echo -e "$CYAN Upgrading NGINX...$COL_RESET"
 echo "deb http://nginx.org/packages/mainline/ubuntu `lsb_release -cs` nginx" \
     | sudo tee /etc/apt/sources.list.d/nginx.list >/dev/null 2>&1
 
-hide_output sudo curl -fsSL https://nginx.org/keys/nginx_signing.key | sudo apt-key add - >/dev/null 2>&1
+sudo curl -fsSL https://nginx.org/keys/nginx_signing.key | sudo apt-key add - >/dev/null 2>&1
 hide_output sudo apt-get update
 hide_output apt_install nginx
 
 # Make additional conf directories, move and generate needed configurations.
-hide_output sudo mkdir -p /etc/nginx/yiimp.server
-hide_output sudo mv /etc/nginx/nginx.conf /etc/nginx/nginx.conf.old
-hide_output sudo cp -r nginx_confs/nginx.conf /etc/nginx/
-hide_output sudo cp -r nginx_confs/general.conf /etc/nginx/yiimp.server
-hide_output sudo cp -r nginx_confs/php_fastcgi.conf /etc/nginx/yiimp.server
-hide_output sudo cp -r nginx_confs/security.conf /etc/nginx/yiimp.server
-hide_output sudo cp -r nginx_confs/letsencrypt.conf /etc/nginx/yiimp.server
+sudo mkdir -p /etc/nginx/yiimp.server
+sudo mv /etc/nginx/nginx.conf /etc/nginx/nginx.conf.old
+sudo cp -r nginx_confs/nginx.conf /etc/nginx/
+sudo cp -r nginx_confs/general.conf /etc/nginx/yiimp.server
+sudo cp -r nginx_confs/php_fastcgi.conf /etc/nginx/yiimp.server
+sudo cp -r nginx_confs/security.conf /etc/nginx/yiimp.server
+sudo cp -r nginx_confs/letsencrypt.conf /etc/nginx/yiimp.server
 
 # Removing default nginx site configs.
-hide_output sudo rm -r /etc/nginx/conf.d/default.conf
-hide_output sudo rm -r /etc/nginx/sites-enabled/default*
-hide_output sudo rm -r /etc/nginx/sites-available/default*
+sudo rm -r /etc/nginx/conf.d/default.conf
+sudo rm -r /etc/nginx/sites-enabled/default*
+sudo rm -r /etc/nginx/sites-available/default*
 
 echo -e "$GREEN NGINX upgrade complete...$COL_RESET"
-hide_output restart_service nginx
-hide_output restart_service php7.3-fpm
+restart_service nginx
+restart_service php7.3-fpm
 set +eu +o pipefail
-hide_output cd $HOME/yiimpserver/yiimp_single
+cd $HOME/yiimpserver/yiimp_single
