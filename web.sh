@@ -22,12 +22,12 @@ if [[ ("$wireguard" == "true") ]]; then
 source $STORAGE_ROOT/yiimp/.wireguard.conf
 fi
 
-echo -e " Building web file structure and copying files...$COL_RESET"
+echo -e "$CYAN Building web file structure and copying files...$COL_RESET"
 cd $STORAGE_ROOT/yiimp/yiimp_setup/yiimp
-sudo sed -i 's/AdminRights/'${AdminPanel}'/' $STORAGE_ROOT/yiimp/yiimp_setup/yiimp/web/yaamp/modules/site/SiteController.php
-sudo cp -r $STORAGE_ROOT/yiimp/yiimp_setup/yiimp/web $STORAGE_ROOT/yiimp/site/
+sudo sed -i 's/AdminRights/'${AdminPanel}'/' $HOME/yiimp/yiimp_setup/yiimp/web/yaamp/modules/site/SiteController.php
+sudo cp -r $HOME/yiimp/yiimp_setup/yiimp/web $STORAGE_ROOT/yiimp/site/
 cd $STORAGE_ROOT/yiimp/yiimp_setup/
-sudo cp -r $STORAGE_ROOT/yiimp/yiimp_setup/yiimp/bin/. /bin/
+sudo cp -r $HOME/yiimp/yiimp_setup/yiimp/bin/. /bin/
 sudo chmod -R +x /bin/yiimp
 sudo mkdir -p /var/www/${DomainName}/html
 sudo mkdir -p /etc/yiimp
@@ -50,7 +50,7 @@ if [[ ("$UsingSubDomain" == "y" || "$UsingSubDomain" == "Y" || "$UsingSubDomain"
     fi
 fi
 
-echo -e " Creating YiiMP configuration files...$COL_RESET"
+echo -e "$CYAN Creating YiiMP configuration files...$COL_RESET"
 cd $HOME/yiimpserver/yiimp_single
 source yiimp_confs/keys.sh
 source yiimp_confs/yiimpserverconfig.sh
@@ -59,7 +59,7 @@ source yiimp_confs/loop2.sh
 source yiimp_confs/blocks.sh
 echo -e "$GREEN Done...$COL_RESET"
 
-echo -e " Setting correct folder permissions...$COL_RESET"
+echo -e "$CYAN Setting correct folder permissions...$COL_RESET"
 whoami=`whoami`
 sudo usermod -aG www-data $whoami
 sudo usermod -a -G www-data $whoami
@@ -76,7 +76,7 @@ echo -e "$GREEN Done...$COL_RESET"
 cd $HOME/yiimpserver/yiimp_single
 
 #Updating YiiMP files for Pool4U build
-echo -e " Adding the Pool4U flare to YiiMP...$COL_RESET"
+echo -e "$CYAN Adding the Pool4U flare to YiiMP...$COL_RESET"
 
 sudo sed -i 's/YII MINING POOLS/'${DomainName}' Mining Pool/g' $STORAGE_ROOT/yiimp/site/web/yaamp/modules/site/index.php
 sudo sed -i 's/domain/'${DomainName}'/g' $STORAGE_ROOT/yiimp/site/web/yaamp/modules/site/index.php

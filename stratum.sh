@@ -10,25 +10,25 @@ source $HOME/yiimpserver/yiimp_single/.wireguard.install.cnf
 
 echo -e " Building blocknotify and stratum...$COL_RESET"
 
-cd $STORAGE_ROOT/yiimp/yiimp_setup/yiimp/blocknotify
+cd $HOME/yiimp/yiimp_setup/yiimp/blocknotify
 blckntifypass=`cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1`
 sudo sed -i 's/tu8tu5/'${blckntifypass}'/' blocknotify.cpp
 hide_output sudo make
-cd $STORAGE_ROOT/yiimp/yiimp_setup/yiimp/stratum/iniparser
+cd $HOME/yiimp/yiimp_setup/yiimp/stratum/iniparser
 hide_output sudo make
-cd $STORAGE_ROOT/yiimp/yiimp_setup/yiimp/stratum
-hide_output sudo sed -i 's/CFLAGS += -DNO_EXCHANGE/#CFLAGS += -DNO_EXCHANGE/' $STORAGE_ROOT/yiimp/yiimp_setup/yiimp/stratum/Makefile
+cd $HOME/yiimp/yiimp_setup/yiimp/stratum
+hide_output sudo sed -i 's/CFLAGS += -DNO_EXCHANGE/#CFLAGS += -DNO_EXCHANGE/' $HOME/yiimp/yiimp_setup/yiimp/stratum/Makefile
 hide_output sudo make
 
 echo -e " Building stratum folder structure and copying files...$COL_RESET"
-cd $STORAGE_ROOT/yiimp/yiimp_setup/yiimp/stratum
+cd $HOME/yiimp/yiimp_setup/yiimp/stratum
 sudo cp -a config.sample/. $STORAGE_ROOT/yiimp/site/stratum/config
 sudo cp -r stratum $STORAGE_ROOT/yiimp/site/stratum
 sudo cp -r run.sh $STORAGE_ROOT/yiimp/site/stratum
 
-cd $STORAGE_ROOT/yiimp/yiimp_setup/yiimp
-sudo cp -r $STORAGE_ROOT/yiimp/yiimp_setup/yiimp/blocknotify/blocknotify $STORAGE_ROOT/yiimp/site/stratum
-sudo cp -r $STORAGE_ROOT/yiimp/yiimp_setup/yiimp/blocknotify/blocknotify /usr/bin
+cd $HOME/yiimp/yiimp_setup/yiimp
+sudo cp -r $HOME/yiimp/yiimp_setup/yiimp/blocknotify/blocknotify $STORAGE_ROOT/yiimp/site/stratum
+sudo cp -r $HOME/yiimp/yiimp_setup/yiimp/blocknotify/blocknotify /usr/bin
 
 sudo rm -r $STORAGE_ROOT/yiimp/site/stratum/config/run.sh
 echo '#!/usr/bin/env bash

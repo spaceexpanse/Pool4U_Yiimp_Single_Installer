@@ -28,7 +28,7 @@ if [[ ("$UsingDomain" == "yes") ]]; then
 fi
 
 # Set timezone
-echo -e " Setting TimeZone to Europe/Skopje...$COL_RESET"
+echo -e "$CYAN Setting TimeZone to Europe/Skopje...$COL_RESET"
 if [ ! -f /etc/timezone ]; then
     echo "Setting timezone to Europe/Skopje."
     echo "Europe/Skopje" > sudo /etc/timezone
@@ -37,7 +37,7 @@ fi
 echo -e "$GREEN Done...$COL_RESET"
 
 # Add repository
-echo -e " Adding the required repsoitories...$COL_RESET"
+echo -e "$CYAN Adding the required repsoitories...$COL_RESET"
 if [ ! -f /usr/bin/add-apt-repository ]; then
     echo " Installing add-apt-repository..."
     #hide_output sudo apt-get -y update
@@ -45,7 +45,7 @@ if [ ! -f /usr/bin/add-apt-repository ]; then
 fi
 echo -e "$GREEN Done...$COL_RESET"
 
-echo -e " Upgrading system packages...$COL_RESET"
+echo -e "$CYAN Upgrading system packages...$COL_RESET"
 if [ ! -f /boot/grub/menu.lst ]; then
     echo " Installing add-apt-repository..."
     #apt_get_quiet upgrade
@@ -59,12 +59,12 @@ echo -e " Running Dist-Upgrade...$COL_RESET"
 apt_get_quiet dist-upgrade
 echo -e "$GREEN Done...$COL_RESET"
 
-echo -e " Initializing system random number generator...$COL_RESET"
+echo -e "$CYAN Initializing system random number generator...$COL_RESET"
 hide_output dd if=/dev/random of=/dev/urandom bs=1 count=32 2> /dev/null
 hide_output sudo pollinate -q -r
 echo -e "$GREEN Done...$COL_RESET"
 
-echo -e " Initializing UFW Firewall...$COL_RESET"
+echo -e "$CYAN Initializing UFW Firewall...$COL_RESET"
 set +eu +o pipefail
 if [ -z "${DISABLE_FIREWALL:-}" ]; then
     # Install `ufw` which provides a simple firewall configuration.
@@ -110,10 +110,10 @@ fi
 
 echo -e "$GREEN Done...$COL_RESET"
 
-echo -e " Downloading Pool4U YiiMP Repo...$COL_RESET"
-hide_output sudo git clone ${YiiMPRepo} $STORAGE_ROOT/yiimp/yiimp_setup/yiimp
+echo -e "$CYAN Downloading Pool4U YiiMP Repo...$COL_RESET"
+hide_output sudo git clone ${YiiMPRepo} $HOME/yiimp/yiimp_setup/yiimp
 #if [[ ("$CoinPort" == "yes") ]]; then
-	cd $STORAGE_ROOT/yiimp/yiimp_setup/yiimp
+	cd $HOME/yiimp/yiimp_setup/yiimp
 	sudo git fetch
 	sudo git checkout next >/dev/null 2>&1
 #fi

@@ -9,7 +9,7 @@ source $STORAGE_ROOT/yiimp/.wireguard.conf
 source /etc/yiimpserver.conf
 
 #clear
-echo -e " Installing WireGuard...$COL_RESET"
+echo -e "$CYAN Installing WireGuard...$COL_RESET"
 (umask 077 && printf "[Interface]\nPrivateKey = " | sudo tee /etc/wireguard/wg0.conf > /dev/null)
 wg genkey | sudo tee -a /etc/wireguard/wg0.conf | wg pubkey | sudo tee /etc/wireguard/publickey
 
