@@ -10,6 +10,7 @@ cd $HOME/yiimpserver/yiimp_single
 
 echo -e "$CYAN Installing cron screens to crontab...$COL_RESET"
 
+(echo "@reboot sleep 30 && motd") | crontab -
 (crontab -l 2>/dev/null; echo "@reboot sleep 20 && /home/yiimp-data/yiimp/starts/screens.start.sh") | crontab -
 if [[ ("$CoinPort" == "no") ]]; then
     (crontab -l 2>/dev/null; echo "@reboot sleep 20 && /home/yiimp-data/yiimp/starts/stratum.start.sh") | crontab -
