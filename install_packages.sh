@@ -7,69 +7,11 @@ BLUE=$ESC_SEQ"34;01m"
 MAGENTA=$ESC_SEQ"35;01m"
 CYAN=$ESC_SEQ"36;01m"
 
-echo -e "$CYAN Installing other packages*...$COL_RESET"
-    hide_output sudo apt-get purge apache2 -y 
-    hide_output sudo apt-get purge apache2-* -y 
+echo -e "$CYAN Removing Apache and installing NGINX...$COL_RESET"
+    hide_output sudo apt-get purge apache2 -y
+    hide_output sudo apt-get purge apache2-* -y
     hide_output sudo apt-get --purge autoremove -y
-    hide_output sudo apt install nginx -y
-    hide_output sudo apt install git -y
-    hide_output sudo apt install nano -y
-    hide_output sudo apt install dialog -y
-    hide_output sudo apt install build-essential -y
-    hide_output sudo apt install autotools-dev -y
-    hide_output sudo apt install automake -y
-    hide_output sudo apt install pkg-config -y
-    hide_output sudo apt install bsdmainutils -y
-    hide_output sudo apt install python3 -y
-    hide_output sudo apt install python3-dev -y
-    hide_output sudo apt install python3-pip -y
-    hide_output sudo apt install wget -y
-    hide_output sudo apt install bc -y
-    hide_output sudo apt install mcrypt -y
-    hide_output sudo apt install imagemagick -y
-    hide_output sudo apt install memcached -y
-    hide_output sudo apt install curl -y
-    hide_output sudo apt install zip -y
-    hide_output sudo apt install unzip -y
-    hide_output sudo apt install rar -y
-    hide_output sudo apt install vim -y
-    hide_output sudo apt install fail2ban -y
-    hide_output sudo apt install ufw -y
-    hide_output sudo apt install qttools5-dev -y
-    hide_output sudo apt install qttools5-dev-tools -y
-    hide_output sudo apt install qtbase5-dev -y
-    hide_output sudo apt install protobuf-compiler -y
-    hide_output sudo apt install update-motd -y
-    hide_output sudo apt install haveged -y
-    hide_output sudo apt install coreutils -y
-    hide_output sudo apt install pollinate -y
-    hide_output sudo apt install unattended-upgrades -y
-    hide_output sudo apt install cron -y
-    hide_output sudo apt install pwgen -y
-    hide_output sudo apt install rsyslog -y
-    hide_output sudo apt install cmake -y
-    hide_output sudo apt install gnupg2 -y
-    hide_output sudo apt install acl -y
-    hide_output sudo apt install update-notifier-common -y
-    hide_output sudo apt install lsb-release -y
-    hide_output sudo apt install landscape-common -y
-    hide_output sudo apt install screen -y
-    hide_output sudo apt install cifs-utils -y
-    hide_output sudo apt install traceroute -y
-    hide_output sudo apt install bison -y
-    hide_output sudo apt install xcb-proto -y
-    hide_output sudo apt install x11proto-xext-dev -y
-    hide_output sudo apt install x11proto-dev -y
-    hide_output sudo apt install xtrans-dev -y
-    hide_output sudo apt install zlib1g-dev -y
-    hide_output sudo apt install autoconf -y
-    hide_output sudo apt install dh-autoreconf -y
-    hide_output sudo apt install apt-transport-https -y
-    hide_output sudo apt install gnutls-dev -y
-    hide_output sudo apt install figlet -y
-    hide_output sudo apt install sendmail -y
-    hide_output sudo apt-get install ntp -y
-    hide_output sudo apt-get install ntpdate -y
+    hide_output sudo apt-get install nginx -y
 echo -e "$GREEN Done...$COL_RESET"
 
 echo -e "$CYAN Installing MariaDB Repository...$COL_RESET"
@@ -91,16 +33,77 @@ echo -e "$GREEN Done...$COL_RESET"
 echo -e "$CYAN Installing ppa:bitcoin/bitcoin...$COL_RESET"
     hide_output sudo add-apt-repository ppa:bitcoin/bitcoin -y
 echo -e "$GREEN Done...$COL_RESET"
-  
+
 echo -e "$CYAN Installing ppa:ondrej/php...$COL_RESET"
     hide_output sudo add-apt-repository ppa:ondrej/php -y
 echo -e "$GREEN Done...$COL_RESET"
 
 echo -e "$CYAN Installing ppa:wireguard/wireguard...$COL_RESET"
-    hide_output sudo apt install wireguard -y
-    hide_output sudo apt install wireguard-dkms -y
-    hide_output sudo apt install wireguard-tools -y
-    hide_output sudo add-apt-repository ppa:wireguard/wireguard -y
+    hide_output sudo apt-get install wireguard -y
+    hide_output sudo apt-get install wireguard-dkms -y
+    #hide_output sudo apt-get install wireguard-tools -y
+    #hide_output sudo add-apt-repository ppa:wireguard/wireguard -y
+echo -e "$GREEN Done...$COL_RESET"
+
+echo -e "$CYAN Installing packages*...$COL_RESET"
+    hide_output sudo apt-get install git -y
+    hide_output sudo apt-get install nano -y
+    hide_output sudo apt-get install dialog -y
+    hide_output sudo apt-get install build-essential -y
+    hide_output sudo apt-get install autotools-dev -y
+    hide_output sudo apt-get install automake -y
+    hide_output sudo apt-get install pkg-config -y
+    hide_output sudo apt-get install bsdmainutils -y
+    hide_output sudo apt-get install python3 -y
+    hide_output sudo apt-get install python3-dev -y
+    hide_output sudo apt-get install python3-pip -y
+    #hide_output sudo apt-get install wget -y
+    #hide_output sudo apt-get install bc -y
+    hide_output sudo apt-get install mcrypt -y
+    hide_output sudo apt-get install imagemagick -y
+    hide_output sudo apt-get install memcached -y
+    hide_output sudo apt-get install curl -y
+    hide_output sudo apt-get install zip -y
+    hide_output sudo apt-get install unzip -y
+    hide_output sudo apt-get install rar -y
+    #hide_output sudo apt-get install vim -y
+    hide_output sudo apt-get install fail2ban -y
+    hide_output sudo apt-get install ufw -y
+    hide_output sudo apt-get install qttools5-dev -y
+    hide_output sudo apt-get install qttools5-dev-tools -y
+    #hide_output sudo apt-get install qtbase5-dev -y
+    hide_output sudo apt-get install protobuf-compiler -y
+    hide_output sudo apt-get install update-motd -y
+    hide_output sudo apt-get install haveged -y
+    #hide_output sudo apt-get install coreutils -y
+    #hide_output sudo apt-get install pollinate -y
+    #hide_output sudo apt-get install unattended-upgrades -y
+    #hide_output sudo apt-get install cron -y
+    hide_output sudo apt-get install pwgen -y
+    #hide_output sudo apt-get install rsyslog -y
+    hide_output sudo apt-get install cmake -y
+    hide_output sudo apt-get install gnupg2 -y
+    #hide_output sudo apt-get install acl -y
+    #hide_output sudo apt-get install update-notifier-common -y
+    #hide_output sudo apt-get install lsb-release -y
+    #hide_output sudo apt-get install landscape-common -y
+    #hide_output sudo apt-get install screen -y
+    hide_output sudo apt-get install cifs-utils -y
+    hide_output sudo apt-get install traceroute -y
+    hide_output sudo apt-get install bison -y
+    hide_output sudo apt-get install xcb-proto -y
+    #hide_output sudo apt-get install x11proto-xext-dev -y
+    #hide_output sudo apt-get install x11proto-dev -y
+    #hide_output sudo apt-get install xtrans-dev -y
+    hide_output sudo apt-get install zlib1g-dev -y
+    #hide_output sudo apt-get install autoconf -y
+    hide_output sudo apt-get install dh-autoreconf -y
+    hide_output sudo apt-get install apt-transport-https -y
+    hide_output sudo apt-get install gnutls-dev -y
+    hide_output sudo apt-get install figlet -y
+    hide_output sudo apt-get install sendmail -y
+    hide_output sudo apt-get install ntp -y
+    hide_output sudo apt-get install ntpdate -y
 echo -e "$GREEN Done...$COL_RESET"
 
 echo -e "$CYAN Installing lib*...$COL_RESET"
@@ -166,7 +169,7 @@ echo -e "$CYAN Installing php*...$COL_RESET"
     hide_output sudo apt-get install php7.3-gd -y
     hide_output sudo apt-get install php7.3-mysql -y
     hide_output sudo apt-get install php7.3-imap -y
-    hide_output sudo apt-get install php7.3-cli -y
+    #hide_output sudo apt-get install php7.3-cli -y
     hide_output sudo apt-get install php7.3-cgi -y
     hide_output sudo apt-get install php7.3-curl -y
     hide_output sudo apt-get install php7.3-intl -y
@@ -185,7 +188,7 @@ echo -e "$CYAN Installing php*...$COL_RESET"
     hide_output sudo apt-get install php-memcache -y
     hide_output sudo apt-get install php-imagick -y
     hide_output sudo apt-get install php-gettext -y
-    hide_output sudo apt-get install phpmyadmin -y
+    #hide_output sudo apt-get install phpmyadmin -y
 echo -e "$GREEN Done...$COL_RESET"
 
 echo -e "$CYAN Installing updates/upgades for packages...$COL_RESET"
