@@ -116,7 +116,7 @@ hide_output cd $HOME/yiimp/yiimp_setup/yiimp
 hide_output sudo git fetch
 hide_output sudo git checkout next >/dev/null 2>&1
 hide_output cd 
-sudo chown -R pool:pool /home/yiimp/
+sudo chown -R pool:pool yiimp/
 hide_output cd $HOME/yiimp/yiimp_setup/yiimp
 
 echo -e "$GREEN System files installed...$COL_RESET"
