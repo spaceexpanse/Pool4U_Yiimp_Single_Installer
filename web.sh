@@ -26,7 +26,7 @@ echo -e "$CYAN Building web file structure and copying files...$COL_RESET"
 cd $STORAGE_ROOT/yiimp/yiimp_setup/yiimp
 sudo sed -i 's/AdminRights/'${AdminPanel}'/' $HOME/yiimp/yiimp_setup/yiimp/web/yaamp/modules/site/SiteController.php
 sudo cp -r $HOME/yiimp/yiimp_setup/yiimp/web $STORAGE_ROOT/yiimp/site/
-cd $STORAGE_ROOT/yiimp/yiimp_setup/
+cd $HOME/yiimp/yiimp_setup/
 sudo cp -r $HOME/yiimp/yiimp_setup/yiimp/bin/. /bin/
 sudo chmod -R +x /bin/yiimp
 sudo mkdir -p /var/www/${DomainName}/html
