@@ -120,8 +120,8 @@ if [ $USER == "root" ]; then
     sudo chown -R pool:pool /home/$SUDO_USER/yiimp/
     #echo jas sum kako root ama so user ...... $SUDO_USER
 else
-    chown -R pool:pool /home/$USER/yiimp/
-    echo jas sum obicen user......... $USER
+    sudo chown -R pool:pool /home/$USER/yiimp/
+    #echo jas sum obicen user......... $USER
 fi
 hide_output cd $HOME/yiimp/yiimp_setup/yiimp
 echo -e "$GREEN System files installed...$COL_RESET"
