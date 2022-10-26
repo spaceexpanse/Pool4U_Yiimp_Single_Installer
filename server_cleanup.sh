@@ -12,7 +12,7 @@ echo -e "$CYAN Installing cron screens to crontab...$COL_RESET"
 
 (crontab -l 2>/dev/null; echo "@reboot sleep 20 && /home/yiimp-data/yiimp/starts/screens.start.sh") | crontab -
 if [[ ("$CoinPort" == "no") ]]; then
-(crontab -l 2>/dev/null; echo "@reboot sleep 20 && /home/yiimp-data/yiimp/starts/stratum.start.sh") | crontab -
+    (crontab -l 2>/dev/null; echo "@reboot sleep 20 && /home/yiimp-data/yiimp/starts/stratum.start.sh") | crontab -
 fi
 
 (crontab -l 2>/dev/null; echo "@reboot source /etc/functions.sh") | crontab -
@@ -20,16 +20,16 @@ fi
 sudo cp -r first_boot.sh $STORAGE_ROOT/yiimp/
 
 echo -e "$GREEN Crontab system complete...$COL_RESET"
-echo -e " Creating YiiMP Screens startup script...$COL_RESET"
+echo -e "$CYAN Creating YiiMP Screens startup script...$COL_RESET"
 
 echo '#!/usr/bin/env bash
 source /etc/yiimpserver.conf
 # Ugly way to remove junk coins from initial YiiMP database on first boot
 source $STORAGE_ROOT/yiimp/.yiimp.conf
 if [[ ! -e '$STORAGE_ROOT/yiimp/first_boot.sh' ]]; then
-echo
+    echo
 else
-source $STORAGE_ROOT/yiimp/first_boot.sh
+    source $STORAGE_ROOT/yiimp/first_boot.sh
 fi
 ########################################
 # Author : Pool4U                      #
