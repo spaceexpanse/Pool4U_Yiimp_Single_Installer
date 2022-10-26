@@ -112,13 +112,14 @@ echo -e "$GREEN Done...$COL_RESET"
 
 echo -e "$CYAN Downloading Pool4U YiiMP Repo...$COL_RESET"
 hide_output sudo git clone ${YiiMPRepo} $HOME/yiimp/yiimp_setup/yiimp
-#if [[ ("$CoinPort" == "yes") ]]; then
-	cd $HOME/yiimp/yiimp_setup/yiimp
-	sudo git fetch
-	sudo git checkout next >/dev/null 2>&1
-#fi
+hide_output cd $HOME/yiimp/yiimp_setup/yiimp
+hide_output sudo git fetch
+hide_output sudo git checkout next >/dev/null 2>&1
+hide_output cd 
+sudo chown -R pool:pool /home/yiimp/
+hide_output cd $HOME/yiimp/yiimp_setup/yiimp
 
 echo -e "$GREEN System files installed...$COL_RESET"
 
 set +eu +o pipefail
-cd $HOME/yiimpserver/yiimp_single
+hide_output cd $HOME/yiimpserver/yiimp_single

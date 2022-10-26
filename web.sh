@@ -23,7 +23,7 @@ source $STORAGE_ROOT/yiimp/.wireguard.conf
 fi
 
 echo -e "$CYAN Building web file structure and copying files...$COL_RESET"
-cd $STORAGE_ROOT/yiimp/yiimp_setup/yiimp
+cd $HOME/yiimp/yiimp_setup/yiimp
 sudo sed -i 's/AdminRights/'${AdminPanel}'/' $HOME/yiimp/yiimp_setup/yiimp/web/yaamp/modules/site/SiteController.php
 sudo cp -r $HOME/yiimp/yiimp_setup/yiimp/web $STORAGE_ROOT/yiimp/site/
 cd $HOME/yiimp/yiimp_setup/

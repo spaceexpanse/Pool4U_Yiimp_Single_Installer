@@ -11,7 +11,7 @@ source $HOME/yiimpserver/yiimp_single/.wireguard.install.cnf
 
 Host_zemi=$DBInternalIP
 IFS="." read -r Host_1 Host_2 Host_3 Host_4 <<< "${DBInternalIP}"
-echo "${Host_1} ${Host_2} ${Host_3} ${Host_4}"
+#echo "${Host_1} ${Host_2} ${Host_3} ${Host_4}"
 for i in $Host_1"."$Host_2"."$Host_3".%"; do
     Host_Napravi+="$i "
 done
@@ -30,7 +30,7 @@ trap print_error ERR
     source $STORAGE_ROOT/yiimp/.wireguard.conf
 #fi
 
-echo -e " Installing MariaDB 10.4...$COL_RESET"
+echo -e "$CYAN Installing MariaDB 10.4...$COL_RESET"
 MARIADB_VERSION='10.4'
 sudo debconf-set-selections <<< "maria-db-$MARIADB_VERSION mysql-server/root_password password $DBRootPassword"
 sudo debconf-set-selections <<< "maria-db-$MARIADB_VERSION mysql-server/root_password_again password $DBRootPassword"
@@ -47,7 +47,7 @@ sudo mysql -u root -p"${DBRootPassword}" -e "$SQL"
 
 echo -e "$GREEN Database creation complete...$COL_RESET"
 
-echo -e " Creating my.cnf...$COL_RESET"
+echo -e "$CYAN Creating my.cnf...$COL_RESET"
 
 echo '[clienthost1]
 user='"${YiiMPPanelName}"'
@@ -69,7 +69,7 @@ password='"${DBRootPassword}"'
 sudo chmod 0600 $STORAGE_ROOT/yiimp/.my.cnf
 echo -e "$GREEN Passwords can be found in $STORAGE_ROOT/yiimp/.my.cnf$COL_RESET"
 
-echo -e " Importing YiiMP Default database values...$COL_RESET"
+echo -e "$CYAN Importing YiiMP Default database values...$COL_RESET"
 cd $HOME/yiimp/yiimp_setup/yiimp/sql
 # import sql dump
 sudo zcat 2019-11-10-yiimp.sql.gz | sudo mysql -u root -p"${DBRootPassword}" "${YiiMPDBName}"
@@ -77,7 +77,7 @@ sudo mysql -u root -p"${DBRootPassword}" "${YiiMPDBName}" --force < 2018-09-22-w
 sudo mysql -u root -p"${DBRootPassword}" "${YiiMPDBName}" --force < 2020-06-03-blocks.sql
 echo -e "$GREEN Database import complete...$COL_RESET"
 
-echo -e " Tweaking MariaDB for better performance...$COL_RESET"
+echo -e "$CYAN Tweaking MariaDB for better performance...$COL_RESET"
 
 sudo sed -i '/max_connections/c\max_connections         = 2000' /etc/mysql/my.cnf
 sudo sed -i '/thread_cache_size/c\thread_cache_size       = 512' /etc/mysql/my.cnf

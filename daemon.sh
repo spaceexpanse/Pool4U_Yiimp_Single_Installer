@@ -18,30 +18,30 @@ function print_error {
 }
 trap print_error ERR
 
-sudo mkdir -p $STORAGE_ROOT/yiimp/yiimp_setup/tmp
-cd $STORAGE_ROOT/yiimp/yiimp_setup/tmp
+sudo mkdir -p $HOME/yiimp/yiimp_setup/tmp
+cd $HOME/yiimp/yiimp_setup/tmp
 echo -e "$GREEN Additional System Files Completed...$COL_RESET"
 
 echo -e " Building OpenSSL 1.0.2g, this may take several minutes...$COL_RESET"
-cd $STORAGE_ROOT/yiimp/yiimp_setup/tmp
+cd $HOME/yiimp/yiimp_setup/tmp
 hide_output sudo wget https://www.openssl.org/source/old/1.0.2/openssl-1.0.2g.tar.gz --no-check-certificate
 hide_output sudo tar -xf openssl-1.0.2g.tar.gz
 cd openssl-1.0.2g
 hide_output sudo ./config --prefix=$STORAGE_ROOT/openssl --openssldir=$STORAGE_ROOT/openssl shared zlib
 hide_output sudo make
 hide_output sudo make install
-cd $STORAGE_ROOT/yiimp/yiimp_setup/tmp
+cd $HOME/yiimp/yiimp_setup/tmp
 sudo rm -r openssl-1.0.2g.tar.gz openssl-1.0.2g
 echo -e "$GREEN OpenSSL 1.0.2g Completed...$COL_RESET"
 
 echo -e " Building bls-signatures, this may take several minutes...$COL_RESET"
-cd $STORAGE_ROOT/yiimp/yiimp_setup/tmp
+cd $HOME/yiimp/yiimp_setup/tmp
 hide_output sudo wget 'https://github.com/mivanoski/Pool4U_bls-signatures/releases/download/1.0/v20181101.zip'
 hide_output sudo unzip v20181101.zip
 cd bls-signatures-20181101
 hide_output sudo cmake .
 hide_output sudo make install
-cd $STORAGE_ROOT/yiimp/yiimp_setup/tmp
+cd $HOME/yiimp/yiimp_setup/tmp
 sudo rm -r v20181101.zip bls-signatures-20181101
 echo -e "$GREEN bls-signatures Completed...$COL_RESET"
 
