@@ -15,7 +15,7 @@ echo "${Host_1} ${Host_2} ${Host_3} ${Host_4}"
 for i in $Host_1"."$Host_2"."$Host_3".%"; do
     Host_Napravi+="$i "
 done
-echo "${Host_Napravi}"
+#echo "${Host_Napravi}"
 
 set -eu -o pipefail
 
@@ -26,9 +26,9 @@ function print_error {
 }
 trap print_error ERR
 
-if [[ ("$wireguard" == "true") ]]; then
+#if [[ ("$wireguard" == "true") ]]; then
     source $STORAGE_ROOT/yiimp/.wireguard.conf
-fi
+#fi
 
 echo -e " Installing MariaDB 10.4...$COL_RESET"
 MARIADB_VERSION='10.4'
