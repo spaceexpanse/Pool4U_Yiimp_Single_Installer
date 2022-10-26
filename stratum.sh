@@ -10,12 +10,7 @@ source $HOME/yiimpserver/yiimp_single/.wireguard.install.cnf
 
 echo -e " Building blocknotify and stratum...$COL_RESET"
 
-cd $STORAGE_ROOT/yiimp/yiimp_setup/yiimp
-echo yiimp $STORAGE_ROOT/yiimp/yiimp_setup/yiimp
-sleep 5
 cd $STORAGE_ROOT/yiimp/yiimp_setup/yiimp/blocknotify
-echo block notify $STORAGE_ROOT/yiimp/yiimp_setup/yiimp/blocknotify
-sleep 5
 blckntifypass=`cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1`
 sudo sed -i 's/tu8tu5/'${blckntifypass}'/' blocknotify.cpp
 hide_output sudo make
@@ -23,7 +18,6 @@ cd $STORAGE_ROOT/yiimp/yiimp_setup/yiimp/stratum/iniparser
 hide_output sudo make
 cd $STORAGE_ROOT/yiimp/yiimp_setup/yiimp/stratum
 sudo sed -i 's/CFLAGS += -DNO_EXCHANGE/#CFLAGS += -DNO_EXCHANGE/' $STORAGE_ROOT/yiimp/yiimp_setup/yiimp/stratum/Makefile
-#git config --global --add safe.directory $STORAGE_ROOT/yiimp/yiimp_setup/yiimp
 hide_output sudo make
 
 echo -e " Building stratum folder structure and copying files...$COL_RESET"
