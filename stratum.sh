@@ -52,7 +52,7 @@ cd '""''"${STORAGE_ROOT}"''""'/yiimp/site/stratum/config/ && ./run.sh $*
 ' | sudo -E tee $STORAGE_ROOT/yiimp/site/stratum/run.sh >/dev/null 2>&1
 sudo chmod +x $STORAGE_ROOT/yiimp/site/stratum/run.sh
 
-echo -e " Updating stratum config files with database connection info...$COL_RESET"
+echo -e "$CYAN Updating stratum config files with database connection info...$COL_RESET"
 cd $STORAGE_ROOT/yiimp/site/stratum/config
 
 sudo sed -i 's/password = tu8tu5/password = '${blckntifypass}'/g' *.conf
