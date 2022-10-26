@@ -23,24 +23,24 @@ source $STORAGE_ROOT/yiimp/.wireguard.conf
 
 echo -e "$CYAN Installing mail system $COL_RESET"
 
-hide_output sudo debconf-set-selections <<< "postfix postfix/mailname string ${PRIMARY_HOSTNAME}"
-hide_output sudo debconf-set-selections <<< "postfix postfix/main_mailer_type string 'Internet Site'"
-hide_output apt_install mailutils
+sudo debconf-set-selections <<< "postfix postfix/mailname string ${PRIMARY_HOSTNAME}"
+sudo debconf-set-selections <<< "postfix postfix/main_mailer_type string 'Internet Site'"
+apt_install mailutils
 
-hide_output sudo sed -i 's/inet_interfaces = all/inet_interfaces = loopback-only/g' /etc/postfix/main.cf
-hide_output sudo sed -i 's/myhostname =/# myhostname =/g' /etc/postfix/main.cf
-hide_output sudo sed -i 's/mydestination/# mydestination/g' /etc/postfix/main.cf
-hide_output sudo sed -i '/# mydestination/i mydestination = $myhostname, localhost.$mydomain, localhost, $mydomain' /etc/postfix/main.cf
-hide_output sudo sed -i '/# myhostname =/i myhostname = localhost' /etc/postfix/main.cf
+sudo sed -i 's/inet_interfaces = all/inet_interfaces = loopback-only/g' /etc/postfix/main.cf
+sudo sed -i 's/myhostname =/# myhostname =/g' /etc/postfix/main.cf
+sudo sed -i 's/mydestination/# mydestination/g' /etc/postfix/main.cf
+sudo sed -i '/# mydestination/i mydestination = $myhostname, localhost.$mydomain, localhost, $mydomain' /etc/postfix/main.cf
+sudo sed -i '/# myhostname =/i myhostname = localhost' /etc/postfix/main.cf
 
-hide_output sudo systemctl restart postfix
-hide_output whoami=`whoami`
+sudo systemctl restart postfix
+whoami=`whoami`
 
-hide_output sudo sed -i '/postmaster:    root/a root:          '${SupportEmail}'' /etc/aliases
-hide_output sudo sed -i '/root:/a '$whoami':     '${SupportEmail}'' /etc/aliases
-hide_output sudo newaliases
+sudo sed -i '/postmaster:    root/a root:          '${SupportEmail}'' /etc/aliases
+sudo sed -i '/root:/a '$whoami':     '${SupportEmail}'' /etc/aliases
+sudo newaliases
 
-hide_output sudo adduser $whoami mail
-hide_output echo -e "$GREEN Mail system completed...$COL_RESET"
+sudo adduser $whoami mail
+echo -e "$GREEN Mail system completed...$COL_RESET"
 set +eu +o pipefail
-hide_output cd $HOME/yiimpserver/yiimp_single
+cd $HOME/yiimpserver/yiimp_single

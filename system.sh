@@ -23,7 +23,7 @@ if [[ ("$wireguard" == "true") ]]; then
 fi
 
 if [[ ("$UsingDomain" == "yes") ]]; then
-    echo ${DomainName} | hide_output sudo tee -a /etc/hostname
+    echo ${DomainName} | sudo tee -a /etc/hostname
     sudo hostname "${DomainName}"
 fi
 
@@ -40,7 +40,7 @@ echo -e "$GREEN Done...$COL_RESET"
 echo -e "$CYAN Adding the required repsoitories...$COL_RESET"
 if [ ! -f /usr/bin/add-apt-repository ]; then
     echo " Installing add-apt-repository..."
-    #hide_output sudo apt-get -y update
+    #sudo apt-get -y update
     apt_install software-properties-common
 fi
 echo -e "$GREEN Done...$COL_RESET"
@@ -51,7 +51,7 @@ if [ ! -f /boot/grub/menu.lst ]; then
     #apt_get_quiet upgrade
 else
     sudo rm /boot/grub/menu.lst
-    hide_output sudo update-grub-legacy-ec2 -y
+    sudo update-grub-legacy-ec2 -y
     apt_get_quiet upgrade
 fi
 echo -e "$GREEN Done...$COL_RESET"
@@ -60,8 +60,8 @@ apt_get_quiet dist-upgrade
 echo -e "$GREEN Done...$COL_RESET"
 
 echo -e "$CYAN Initializing system random number generator...$COL_RESET"
-hide_output dd if=/dev/random of=/dev/urandom bs=1 count=32 2> /dev/null
-hide_output sudo pollinate -q -r
+dd if=/dev/random of=/dev/urandom bs=1 count=32 2> /dev/null
+sudo pollinate -q -r
 echo -e "$GREEN Done...$COL_RESET"
 
 echo -e "$CYAN Initializing UFW Firewall...$COL_RESET"
@@ -89,15 +89,15 @@ if [ -z "${DISABLE_FIREWALL:-}" ]; then
         fi
     fi
 
-    hide_output sudo ufw --force enable;
+    sudo ufw --force enable;
 fi #NODOC
 set -eu -o pipefail
 echo -e "$GREEN Done...$COL_RESET"
 echo -e "$CYAN Installing YiiMP Required system packages...$COL_RESET"
 if [ -f /usr/sbin/apache2 ]; then
     echo Removing apache...
-    hide_output apt-get -y purge apache2 apache2-*
-    #hide_output apt-get -y --purge autoremove
+    apt-get -y purge apache2 apache2-*
+    #apt-get -y --purge autoremove
 fi
 
 # ### Suppress Upgrade Prompts
@@ -111,11 +111,11 @@ fi
 echo -e "$GREEN Done...$COL_RESET"
 
 echo -e "$CYAN Downloading Pool4U YiiMP Repo...$COL_RESET"
-hide_output sudo git clone ${YiiMPRepo} $HOME/yiimp/yiimp_setup/yiimp
-hide_output cd $HOME/yiimp/yiimp_setup/yiimp
-hide_output sudo git fetch
-hide_output sudo git checkout next >/dev/null 2>&1
-hide_output cd $HOME/
+sudo git clone ${YiiMPRepo} $HOME/yiimp/yiimp_setup/yiimp
+cd $HOME/yiimp/yiimp_setup/yiimp
+sudo git fetch
+sudo git checkout next >/dev/null 2>&1
+cd $HOME/
 if [ $USER == "root" ]; then
     sudo chown -R pool:pool /home/$SUDO_USER/yiimp/
     #echo jas sum kako root ama so user ...... $SUDO_USER
@@ -123,8 +123,8 @@ else
     sudo chown -R pool:pool /home/$USER/yiimp/
     #echo jas sum obicen user......... $USER
 fi
-hide_output cd $HOME/yiimp/yiimp_setup/yiimp
+cd $HOME/yiimp/yiimp_setup/yiimp
 echo -e "$GREEN System files installed...$COL_RESET"
 
 set +eu +o pipefail
-hide_output cd $HOME/yiimpserver/yiimp_single
+cd $HOME/yiimpserver/yiimp_single

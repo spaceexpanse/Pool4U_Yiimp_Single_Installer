@@ -13,12 +13,12 @@ echo -e "$CYAN Building blocknotify and stratum...$COL_RESET"
 cd $HOME/yiimp/yiimp_setup/yiimp/blocknotify
 blckntifypass=`cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1`
 sudo sed -i 's/tu8tu5/'${blckntifypass}'/' blocknotify.cpp
-hide_output sudo make
+sudo make
 cd $HOME/yiimp/yiimp_setup/yiimp/stratum/iniparser
-hide_output sudo make
+sudo make
 cd $HOME/yiimp/yiimp_setup/yiimp/stratum
-hide_output sudo sed -i 's/CFLAGS += -DNO_EXCHANGE/#CFLAGS += -DNO_EXCHANGE/' $HOME/yiimp/yiimp_setup/yiimp/stratum/Makefile
-hide_output sudo make
+sudo sed -i 's/CFLAGS += -DNO_EXCHANGE/#CFLAGS += -DNO_EXCHANGE/' $HOME/yiimp/yiimp_setup/yiimp/stratum/Makefile
+sudo make
 
 echo -e "$CYAN Building stratum folder structure and copying files...$COL_RESET"
 cd $HOME/yiimp/yiimp_setup/yiimp/stratum

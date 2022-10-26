@@ -86,10 +86,10 @@ server {
 }
 ' | sudo -E tee /etc/nginx/sites-available/${DomainName}.conf >/dev/null 2>&1
 
-hide_output sudo ln -s /etc/nginx/sites-available/${DomainName}.conf /etc/nginx/sites-enabled/${DomainName}.conf
-hide_output sudo ln -s $STORAGE_ROOT/yiimp/site/web /var/www/${DomainName}/html
+sudo ln -s /etc/nginx/sites-available/${DomainName}.conf /etc/nginx/sites-enabled/${DomainName}.conf
+sudo ln -s $STORAGE_ROOT/yiimp/site/web /var/www/${DomainName}/html
 
-hide_output restart_service nginx
-hide_output restart_service php7.3-fpm
+restart_service nginx
+restart_service php7.3-fpm
 set +eu +o pipefail
-hide_output cd $HOME/yiimpserver/yiimp_single
+cd $HOME/yiimpserver/yiimp_single

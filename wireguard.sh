@@ -14,9 +14,9 @@ echo -e "$CYAN Installing WireGuard...$COL_RESET"
 wg genkey | sudo tee -a /etc/wireguard/wg0.conf | wg pubkey | sudo tee /etc/wireguard/publickey
 
 # Install WireGuard on main server.
-echo "ListenPort = 50002" | hide_output sudo tee -a /etc/wireguard/wg0.conf
-echo "SaveConfig = true" | hide_output sudo tee -a /etc/wireguard/wg0.conf
-echo "Address = ${DBInternalIP}/24" | hide_output sudo tee -a /etc/wireguard/wg0.conf
+echo "ListenPort = 50002" | sudo tee -a /etc/wireguard/wg0.conf
+echo "SaveConfig = true" | sudo tee -a /etc/wireguard/wg0.conf
+echo "Address = ${DBInternalIP}/24" | sudo tee -a /etc/wireguard/wg0.conf
 cd $HOME
 sudo systemctl start wg-quick@wg0
 sudo systemctl enable wg-quick@wg0

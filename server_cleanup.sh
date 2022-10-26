@@ -132,8 +132,8 @@ CRONS=$STORAGE_ROOT/yiimp/site/crons
 STRATUM_DIR=$STORAGE_ROOT/yiimp/site/stratum
 ' | sudo -E tee $STORAGE_ROOT/yiimp/.prescreens.start.conf >/dev/null 2>&1
 
-echo "source /etc/yiimpserver.conf" | hide_output tee -a ~/.bashrc
-echo "source $STORAGE_ROOT/yiimp/.prescreens.start.conf" | hide_output tee -a ~/.bashrc
+echo "source /etc/yiimpserver.conf" | tee -a ~/.bashrc
+echo "source $STORAGE_ROOT/yiimp/.prescreens.start.conf" | tee -a ~/.bashrc
 echo -e "$GREEN YiiMP Screens added...$COL_RESET"
 
 sudo rm -r $STORAGE_ROOT/yiimp/yiimp_setup

@@ -7,7 +7,7 @@
 source /etc/functions.sh
 
 sleep 5
-hide_output yiimp checkup
+yiimp checkup
 
 # Prevents error when trying to log in to admin panel the first time...
 
