@@ -36,7 +36,7 @@ sudo debconf-set-selections <<< "maria-db-$MARIADB_VERSION mysql-server/root_pas
 sudo debconf-set-selections <<< "maria-db-$MARIADB_VERSION mysql-server/root_password_again password $DBRootPassword"
 apt_install mariadb-server mariadb-client
 echo -e "$GREEN MariaDB build complete...$COL_RESET"
-echo -e " Creating DB users for YiiMP...$COL_RESET"
+echo -e "$CYAN Creating DB users for YiiMP...$COL_RESET"
 
 Q1="CREATE DATABASE IF NOT EXISTS ${YiiMPDBName};"
 Q2="GRANT ALL ON ${YiiMPDBName}.* TO '${YiiMPPanelName}'@'${Host_Napravi}' IDENTIFIED BY '$PanelUserDBPassword';"

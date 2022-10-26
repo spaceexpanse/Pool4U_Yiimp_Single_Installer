@@ -55,7 +55,7 @@ else
     apt_get_quiet upgrade
 fi
 echo -e "$GREEN Done...$COL_RESET"
-echo -e " Running Dist-Upgrade...$COL_RESET"
+echo -e "$CYAN Running Dist-Upgrade...$COL_RESET"
 apt_get_quiet dist-upgrade
 echo -e "$GREEN Done...$COL_RESET"
 
